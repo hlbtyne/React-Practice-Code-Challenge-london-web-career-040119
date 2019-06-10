@@ -13,10 +13,10 @@ const Table = (props) => {
       <h1 className="remaining">
         You have: ${ props.budget } remaining!
       </h1>
+      
       <div className="table">
         <div className="stack">
           {
-            
             renderPlates(props.sushisEaten)
           }
         </div>

@@ -14,9 +14,7 @@ class App extends Component {
   }
 
   chargeTable = (sushi) => {
-    // if (sushi.price >= this.state.budget){
       this.setState({ budget: this.state.budget - sushi.price})
-    // }
   }
 
   componentDidMount() {
@@ -32,14 +30,27 @@ class App extends Component {
     this.setState({data: newList});
   }
 
+  iCantAffordThisSushi = sushi => sushi.price > this.state.budget
+
+  sushiHasBeenEaten = sushi => this.state.sushisEaten.includes(sushi)
+
   eatSushi = (sushi) => {
+    if (this.iCantAffordThisSushi(sushi)) return
+    if (this.sushiHasBeenEaten(sushi)) return 
+
+    this.chargeTable(sushi)
     this.setState({ sushisEaten: [...this.state.sushisEaten, sushi] })
   }
 
   render() {
     return (
       <div className="app">
-        <SushiContainer sushis={this.state.data} more={this.showNextFourSushis} eat={this.eatSushi} charge={this.chargeTable} budget={this.state.budget}/>
+        <SushiContainer
+          sushis={this.state.data}
+          more={this.showNextFourSushis}
+          sushiHasBeenEaten={this.sushiHasBeenEaten}
+          eat={this.eatSushi}
+        />
         <Table sushisEaten={this.state.sushisEaten} budget={this.state.budget}/>
       </div>
     );
