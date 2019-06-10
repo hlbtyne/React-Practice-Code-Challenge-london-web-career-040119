@@ -14,7 +14,7 @@ We've had a bit of trouble with our patented Sushi Saga conveyor belt system, so
 
 ### Server
 To get you going, we've got a backend just chock full of sushi just waiting to be eaten! To get get these guys, you're going to have to do the follow:
-
+ 
 1. Navigate to `sushi-saga-client` and run `json-server --watch db.json`
 2. Navigate to `http://localhost:3000/sushis` to confirm delivery of sushi!
 
