@@ -7,13 +7,13 @@ class Sushi extends Component {
   }  
 
   handleClick = (sushi) => {
-    this.setState({ eaten: true })
-    if(this.state.eaten) {
-      null
-     } else {
-      this.props.eat(sushi)
-      this.props.charge(sushi)
-     } 
+    if(sushi.price <= this.props.budget){
+      this.setState({ eaten: true })
+      if(!this.state.eaten) {
+        this.props.eat(sushi)
+        this.props.charge(sushi)
+      }
+    }
   }
 
   render() {
@@ -23,7 +23,6 @@ class Sushi extends Component {
         
              onClick={() => this.handleClick(this.props.sushi)}>
           { 
-            /* Tell me if this sushi has been eaten! */ 
             this.state.eaten ? null : <img src={this.props.sushi.img_url} width="100%" />
           }
         </div>

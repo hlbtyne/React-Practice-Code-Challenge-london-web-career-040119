@@ -10,12 +10,14 @@ class App extends Component {
   state = {
     data: [],
     sushisEaten: [],
-    budget: 1000
+    budget: 20
   }
 
   chargeTable = (sushi) => {
-    this.setState({ budget: this.state.budget - sushi.price})
-    }
+    // if (sushi.price >= this.state.budget){
+      this.setState({ budget: this.state.budget - sushi.price})
+    // }
+  }
 
   componentDidMount() {
     fetch(API)
@@ -37,7 +39,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <SushiContainer sushis={this.state.data} more={this.showNextFourSushis} eat={this.eatSushi} charge={this.chargeTable}/>
+        <SushiContainer sushis={this.state.data} more={this.showNextFourSushis} eat={this.eatSushi} charge={this.chargeTable} budget={this.state.budget}/>
         <Table sushisEaten={this.state.sushisEaten} budget={this.state.budget}/>
       </div>
     );

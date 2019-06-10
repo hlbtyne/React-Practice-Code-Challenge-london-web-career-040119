@@ -8,7 +8,7 @@ const SushiContainer = (props) => {
     <Fragment>
       <div className="belt">
         {
-          props.sushis.slice(0, 4).map(sushi => < Sushi key={sushi.id} sushi={sushi} eat={() => props.eat(sushi)} charge={() => props.charge(sushi)}/>)
+          props.sushis.slice(0, 4).map(sushi => < Sushi key={sushi.id} sushi={sushi} eat={() => props.eat(sushi)} charge={() => props.charge(sushi)} budget={props.budget}/>)
         }
         <MoreButton more={props.more}/>
       </div>
